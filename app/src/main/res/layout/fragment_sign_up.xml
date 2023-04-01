@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.auth.SignUpFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include
+                    android:id="@+id/appLogo"
+                    layout="@layout/logo_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin100"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:titleTxt="@{@string/sign_up}" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/userNameCard"
+                    style="@style/AppCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin16"
+                    android:layout_marginTop="@dimen/margin60"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/appLogo">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/userNameTextInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/gray_hint"
+                        app:boxBackgroundMode="none"
+                        app:errorEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/userNameET"
+                            style="@style/AppTheme.TextAppearance.Bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="@string/username"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:padding="@dimen/margin16"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray_hint"
+                            android:textSize="@dimen/font_16"
+
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/emailCard"
+                    style="@style/AppCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin16"
+                    android:layout_marginTop="@dimen/margin30"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/userNameCard">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/gray_hint"
+                        app:boxBackgroundMode="none"
+                        app:errorEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/emailET"
+                            style="@style/AppTheme.TextAppearance.Bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="@string/email"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:padding="@dimen/margin16"
+                            android:textColorHint="@color/gray_hint"
+                            android:textSize="@dimen/font_16" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/passwordCard"
+                    style="@style/AppCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin16"
+                    android:layout_marginTop="@dimen/margin30"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emailCard">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/gray_hint"
+                        app:boxBackgroundMode="none"
+                        app:errorEnabled="false"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/gray_hint">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/passwordET"
+                            style="@style/AppTheme.TextAppearance.Bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="@string/enter_password"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:padding="@dimen/margin16"
+                            android:textColorHint="@color/gray_hint"
+                            android:textSize="@dimen/font_16" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/confirmPasswordCard"
+                    style="@style/AppCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin16"
+                    android:layout_marginTop="@dimen/margin30"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/passwordCard">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/gray_hint"
+                        app:boxBackgroundMode="none"
+                        app:errorEnabled="false"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/gray_hint">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/confirmPasswordET"
+                            style="@style/AppTheme.TextAppearance.Bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="@string/confirm_password"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:padding="@dimen/margin16"
+                            android:textColorHint="@color/gray_hint"
+                            android:textSize="@dimen/font_16" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin20"
+                    android:button="@drawable/checkbox_bg"
+                    android:checked="false"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    app:layout_constraintEnd_toStartOf="@+id/confirmTxt"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/confirmPasswordCard" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/confirmTxt"
+                    style="@style/AppTheme.TextAppearance.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin8"
+                    android:text="@string/confirm_signup"
+                    android:textColor="@color/gray_hint"
+                    android:textSize="@dimen/font_10"
+                    app:layout_constraintBottom_toBottomOf="@+id/checkBox"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/checkBox"
+                    app:layout_constraintTop_toTopOf="@+id/checkBox" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/signUpBtn"
+                    style="@style/AppButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin16"
+                    android:layout_marginTop="@dimen/margin40"
+                    android:paddingTop="@dimen/margin16"
+                    android:paddingBottom="@dimen/margin16"
+                    android:text="@string/sign_up"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt1"
+                    style="@style/AppTheme.TextAppearance.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin20"
+                    android:layout_marginBottom="@dimen/margin20"
+                    android:text="@string/have_account"
+                    android:textColor="@color/gray_hint"
+                    android:textSize="@dimen/font_14"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/signInBtn"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/signInBtn"
+                    style="@style/AppTheme.TextAppearance.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin4"
+                    android:layout_marginTop="@dimen/margin20"
+                    android:layout_marginBottom="@dimen/margin20"
+                    android:text="@string/sign_in"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txt1"
+                    app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:visibility="gone"
+            android:id="@+id/layoutProgress"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            layout="@layout/loading_view"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

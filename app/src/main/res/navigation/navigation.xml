@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.uni.justservices.ui.auth.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/signInFragment"
+            />
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.uni.justservices.ui.auth.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/signUpFragment"
+            />
+        <action
+            android:id="@+id/action_signUpFragment_to_userCategoryFragment"
+            app:destination="@id/userCategoryFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/signUpFragment"
+            />
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/userCategoryFragment"
+        android:name="com.uni.justservices.ui.UserCategoryFragment"
+        android:label="fragment_user_category"
+        tools:layout="@layout/fragment_user_category" >
+        <action
+            android:id="@+id/action_userCategoryFragment_to_createUserProfileFragment"
+            app:destination="@id/createUserProfileFragment" />
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/createUserProfileFragment"
+        android:name="com.uni.justservices.ui.CreateUserProfileFragment"
+        android:label="fragment_user_create_profile"
+        tools:layout="@layout/fragment_user_create_profile" >
+        <argument
+            android:name="userType"
+            app:argType="com.uni.justservices.data.UserType"
+            />
+        <action
+            android:id="@+id/action_createUserProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.uni.justservices.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="true"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.uni.justservices.ui.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat">
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="true"
+            />
+
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.uni.justservices.ui.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification">
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="true"
+            />
+
+    </fragment>
+</navigation>
