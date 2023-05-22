@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:background="@drawable/trip_bg"
+    android:layout_marginHorizontal="@dimen/margin10"
+    android:layout_marginVertical="@dimen/margin10"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cityContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/rounded_white_bg"
+        android:layout_marginHorizontal="@dimen/margin20"
+        android:layout_marginTop="@dimen/margin10"
+        >
+
+        <TextView
+            android:id="@+id/cityTitle"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/city"
+            />
+
+        <TextView
+            android:id="@+id/citydot"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/dot"
+            />
+
+        <TextView
+            android:id="@+id/cityValue"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginEnd="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            tool:text="Amman"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/stationContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/cityContainer"
+        app:layout_constraintEnd_toEndOf="@+id/cityContainer"
+        app:layout_constraintTop_toBottomOf="@+id/cityContainer"
+        android:layout_marginTop="@dimen/margin20"
+        android:background="@drawable/rounded_white_bg"
+        >
+
+        <TextView
+            android:id="@+id/stationTitle"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/Station"
+            />
+
+        <TextView
+            android:id="@+id/stationdot"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/dot"
+            />
+
+        <TextView
+            android:id="@+id/stationValue"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginEnd="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            tool:text="As-Salt"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dateContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/cityContainer"
+        app:layout_constraintEnd_toEndOf="@+id/cityContainer"
+        app:layout_constraintTop_toBottomOf="@+id/stationContainer"
+        android:layout_marginTop="@dimen/margin20"
+        android:background="@drawable/rounded_white_bg"
+        >
+
+        <TextView
+            android:id="@+id/dateTitle"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/departure_date"
+            />
+
+        <TextView
+            android:id="@+id/datedot"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/dot"
+            />
+
+        <TextView
+            android:id="@+id/dateValue"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginEnd="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            tool:text="20 /10 /22"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/timeContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/cityContainer"
+        app:layout_constraintEnd_toEndOf="@+id/cityContainer"
+        app:layout_constraintTop_toBottomOf="@+id/dateContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/margin20"
+        android:layout_marginBottom="@dimen/margin10"
+        android:background="@drawable/rounded_white_bg"
+        >
+
+        <TextView
+            android:id="@+id/timeTitle"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/departure_time"
+            />
+
+        <TextView
+            android:id="@+id/timedot"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/dot"
+            />
+
+        <TextView
+            android:id="@+id/timeValue"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginEnd="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            tool:text="12:45 PM"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

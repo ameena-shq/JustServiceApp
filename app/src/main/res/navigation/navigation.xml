@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/signInFragment">
+    app:startDestination="@id/chatListFragment">
 
     <fragment
         android:id="@+id/signInFragment"
@@ -17,13 +17,20 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@animator/nav_default_pop_exit_anim"
-            app:popUpToInclusive="true"
-            app:popUpTo="@+id/signInFragment"
             />
         <argument
             android:name="showBottomNavigationBar"
             android:defaultValue="false"
             />
+        <action
+            android:id="@+id/action_signInFragment_to_createUserProfileFragment"
+            app:destination="@id/createUserProfileFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -37,32 +44,7 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@animator/nav_default_pop_exit_anim"
-            app:popUpToInclusive="true"
-            app:popUpTo="@+id/signUpFragment"
             />
-        <action
-            android:id="@+id/action_signUpFragment_to_userCategoryFragment"
-            app:destination="@id/userCategoryFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@animator/nav_default_pop_exit_anim"
-            app:popUpToInclusive="true"
-            app:popUpTo="@+id/signUpFragment"
-            />
-        <argument
-            android:name="showBottomNavigationBar"
-            android:defaultValue="false"
-            />
-    </fragment>
-    <fragment
-        android:id="@+id/userCategoryFragment"
-        android:name="com.uni.justservices.ui.UserCategoryFragment"
-        android:label="fragment_user_category"
-        tools:layout="@layout/fragment_user_category" >
-        <action
-            android:id="@+id/action_userCategoryFragment_to_createUserProfileFragment"
-            app:destination="@id/createUserProfileFragment" />
         <argument
             android:name="showBottomNavigationBar"
             android:defaultValue="false"
@@ -70,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/createUserProfileFragment"
-        android:name="com.uni.justservices.ui.CreateUserProfileFragment"
+        android:name="com.uni.justservices.ui.profile.CreateUserProfileFragment"
         android:label="fragment_user_create_profile"
         tools:layout="@layout/fragment_user_create_profile" >
         <argument
@@ -94,6 +76,29 @@
             android:name="showBottomNavigationBar"
             android:defaultValue="true"
             />
+        <argument
+            android:name="userType"
+            app:argType="com.uni.justservices.data.UserType"
+            android:defaultValue="Non"
+            />
+        <action
+            android:id="@+id/action_homeFragment_to_addTripFragment"
+            app:destination="@id/addTripFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_studentBusScheduleFragment"
+            app:destination="@id/studentBusScheduleFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_expertListFragment"
+            app:destination="@id/expertListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_studentRequestsFragment"
+            app:destination="@id/studentRequestsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -102,7 +107,11 @@
         tools:layout="@layout/fragment_chat">
         <argument
             android:name="showBottomNavigationBar"
-            android:defaultValue="true"
+            android:defaultValue="false"
+            />
+        <argument
+            android:name="selectedUser"
+            app:argType="com.uni.justservices.data.User"
             />
 
     </fragment>
@@ -115,6 +124,114 @@
             android:name="showBottomNavigationBar"
             android:defaultValue="true"
             />
+        <action
+            android:id="@+id/action_notificationFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_expertProfileFragment"
+            app:destination="@id/expertProfileFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/addTripFragment"
+        android:name="com.uni.justservices.ui.home.bus.AddTripFragment"
+        android:label="fragment_add_trip"
+        tools:layout="@layout/fragment_add_trip" >
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+        <argument
+            android:name="trip"
+            app:argType="com.uni.justservices.data.Trip"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/tripListFragment"
+        android:name="com.uni.justservices.ui.home.bus.DriverTripListFragment"
+        android:label="fragment_trip_list"
+        tools:layout="@layout/fragment_trip_list" >
+        <action
+            android:id="@+id/action_tripListFragment_to_addTripFragment"
+            app:destination="@id/addTripFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentBusScheduleFragment"
+        android:name="com.uni.justservices.ui.home.student.StudentBusScheduleFragment"
+        android:label="fragment_bus_schedule"
+        tools:layout="@layout/fragment_bus_schedule" />
+    <fragment
+        android:id="@+id/expertListFragment"
+        android:name="com.uni.justservices.ui.home.student.ExpertListFragment"
+        android:label="fragment_expert"
+        tools:layout="@layout/fragment_expert" >
+        <action
+            android:id="@+id/action_expertListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentRequestsFragment"
+        android:name="com.uni.justservices.ui.home.expert.StudentRequestsFragment"
+        android:label="fragment_student_requests"
+        tools:layout="@layout/fragment_student_requests" />
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.uni.justservices.ui.home.expert.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.uni.justservices.ui.auth.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment" >
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/expertProfileFragment"
+        android:name="com.uni.justservices.ui.profile.ExpertProfileFragment"
+        android:label="fragment_expert_profile"
+        tools:layout="@layout/fragment_expert_profile">
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+        <argument
+            android:name="selectedUser"
+            app:argType="com.uni.justservices.data.User"
+            />
+        <action
+            android:id="@+id/action_expertProfileFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.uni.justservices.ui.profile.ProfileFragment"
+        android:label="MyProfileFragment" >
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+        <argument
+            android:name="selectedUser"
+            app:argType="com.uni.justservices.data.User"
+            />
+
+    </fragment>
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.uni.justservices.ui.chat.ChatListFragment"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list" >
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="true"
+            />
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
 </navigation>

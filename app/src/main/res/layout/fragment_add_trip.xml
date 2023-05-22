@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.bus.AddTripFragment">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/AppTheme.TextAppearance.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin20"
+        android:padding="@dimen/margin16"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/font_16"
+        android:text="@string/add_trip"
+        />
+
+    <androidx.core.widget.NestedScrollView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cityCard"
+                style="@style/AppCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin40"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/cityTextInput"
+                    style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/gray_hint"
+                    app:boxBackgroundMode="none"
+                    app:errorEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/cityET"
+                        style="@style/AppTheme.TextAppearance.Bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:hint="@string/city"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:padding="@dimen/margin16"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray_hint"
+                        android:textSize="@dimen/font_16"
+
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/stationCard"
+                style="@style/AppCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin20"
+                app:layout_constraintEnd_toEndOf="@+id/cityCard"
+                app:layout_constraintStart_toStartOf="@+id/cityCard"
+                app:layout_constraintTop_toBottomOf="@id/cityCard">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/stationTextInput"
+                    style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/gray_hint"
+                    app:boxBackgroundMode="none"
+                    app:errorEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/stationET"
+                        style="@style/AppTheme.TextAppearance.Bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:hint="@string/Station"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:padding="@dimen/margin16"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray_hint"
+                        android:textSize="@dimen/font_16"
+
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/dayCard"
+                style="@style/AppCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin20"
+                app:layout_constraintEnd_toEndOf="@+id/stationCard"
+                app:layout_constraintStart_toStartOf="@+id/stationCard"
+                app:layout_constraintTop_toBottomOf="@id/stationCard"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dayTextInput"
+                    style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/gray_hint"
+                    app:boxBackgroundMode="none"
+                    app:errorEnabled="false">
+
+                    <TextView
+                        android:id="@+id/dayET"
+                        style="@style/AppTheme.TextAppearance.Bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:hint="@string/departure_date"
+                        android:maxLines="1"
+                        android:padding="@dimen/margin16"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray_hint"
+                        android:textSize="@dimen/font_16"
+
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/timeCard"
+                style="@style/AppCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin20"
+                app:layout_constraintEnd_toEndOf="@+id/dayCard"
+                app:layout_constraintStart_toStartOf="@+id/dayCard"
+                app:layout_constraintTop_toBottomOf="@id/dayCard"
+                android:layout_marginBottom="@dimen/margin10"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/timeTextInput"
+                    style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/gray_hint"
+                    app:boxBackgroundMode="none"
+                    app:errorEnabled="false">
+
+                    <TextView
+                        android:id="@+id/timeET"
+                        style="@style/AppTheme.TextAppearance.Bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:hint="@string/departure_time"
+                        android:padding="@dimen/margin16"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray_hint"
+                        android:textSize="@dimen/font_16"
+
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addTripBtn"
+                style="@style/AppButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin16"
+                android:layout_marginTop="@dimen/margin100"
+                android:paddingTop="@dimen/margin16"
+                android:paddingBottom="@dimen/margin16"
+                android:text="@string/add_trip_txt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timeCard"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

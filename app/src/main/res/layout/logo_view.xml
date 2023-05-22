@@ -22,7 +22,7 @@
             app:srcCompat="@drawable/app_logo" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/titleTxt"
+            android:id="@+id/titleTxtV"
             style="@style/AppTheme.TextAppearance.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

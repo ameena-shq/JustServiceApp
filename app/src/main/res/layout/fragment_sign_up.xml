@@ -28,14 +28,14 @@
                     layout="@layout/logo_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin100"
+                    android:layout_marginTop="@dimen/margin20"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:titleTxt="@{@string/sign_up}" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/userNameCard"
+                    android:id="@+id/firstNameCard"
                     style="@style/AppCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                     android:layout_marginTop="@dimen/margin30"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/userNameCard">
+                    app:layout_constraintTop_toBottomOf="@id/firstNameCard">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                             android:layout_height="match_parent"
                             android:background="@color/white"
                             android:hint="@string/enter_password"
-                            android:inputType="text"
+                            android:inputType="textPassword"
                             android:maxLines="1"
                             android:padding="@dimen/margin16"
                             android:textColorHint="@color/gray_hint"
@@ -167,13 +167,54 @@
                             android:layout_height="match_parent"
                             android:background="@color/white"
                             android:hint="@string/confirm_password"
-                            android:inputType="text"
+                            android:inputType="textPassword"
                             android:maxLines="1"
                             android:padding="@dimen/margin16"
                             android:textColorHint="@color/gray_hint"
                             android:textSize="@dimen/font_16" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/userTypeCard"
+                    style="@style/AppCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin16"
+                    android:layout_marginTop="@dimen/margin30"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/confirmPasswordCard">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/gray_hint"
+                        app:hintEnabled="false"
+                        app:boxBackgroundMode="outline"
+                        app:endIconMode="dropdown_menu"
+                        app:errorEnabled="false">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/userTypeET"
+                            style="@style/AppTheme.TextAppearance.Bold"
+                            android:textColor="@color/black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:enabled="false"
+                            android:hint="@string/userType"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:completionThreshold="2"
+                            android:maxLines="1"
+                            android:padding="@dimen/margin16"
+                            android:textColorHint="@color/gray_hint"
+                            android:textSize="@dimen/font_16" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
 
                 <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/checkBox"
@@ -187,7 +228,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/confirmTxt"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/confirmPasswordCard" />
+                    app:layout_constraintTop_toBottomOf="@+id/userTypeCard" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/confirmTxt"
@@ -252,14 +293,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
-
-        <include
-            android:visibility="gone"
-            android:id="@+id/layoutProgress"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            layout="@layout/loading_view"
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

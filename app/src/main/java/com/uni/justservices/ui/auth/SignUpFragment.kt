@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -12,13 +13,18 @@ import com.google.firebase.ktx.Firebase
 import com.uni.justservices.BuildConfig
 import com.uni.justservices.R
 import com.uni.justservices.data.User
+import com.uni.justservices.data.UserDetails
+import com.uni.justservices.data.UserType
 import com.uni.justservices.databinding.FragmentSignUpBinding
 import com.uni.justservices.ui.base.BaseFragment
-
+import com.uni.justservices.ui.custom.SpinnerCustomAdapter
+import com.uni.justservices.ui.custom.UserTypeAdapter
 
 
 class SignUpFragment : BaseFragment() {
     lateinit var binding: FragmentSignUpBinding
+    lateinit var mAuth:FirebaseAuth
+    private var selectedUserType:UserType ?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,9 +37,15 @@ class SignUpFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showHideToolbar(show = false)
+        val userType = mutableListOf(UserType.Student,UserType.Expert,UserType.BusDriver)
+        val adapter = UserTypeAdapter(requireContext(),R.layout.dropdown_item,userType)
+        binding.userTypeET.setAdapter(adapter)
+        binding.userTypeET.setOnItemClickListener { parent, view, position, id ->
+            selectedUserType = adapter.getItem(position)
+        }
         binding.signUpBtn.setOnClickListener {
-            //signUp()
-            findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToUserCategoryFragment())
+            signUp()
         }
 
         binding.signInBtn.setOnClickListener {
@@ -67,60 +79,56 @@ class SignUpFragment : BaseFragment() {
             showToastMsg(resources.getString(R.string.matchPassword_error))
             return
         }
+        if (selectedUserType == null){
+            showToastMsg(resources.getString(R.string.userType_error_mg))
+            return
+        }
         if (!binding.checkBox.isChecked){
             showToastMsg(resources.getString(R.string.terms_error))
             return
         }
-        showProgress(true)
-        val mAuth = FirebaseAuth.getInstance()
+        showHideProgressBar(true)
+        mAuth = FirebaseAuth.getInstance()
         mAuth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener {task->
                 if (task.isSuccessful){
                     val userId = mAuth.currentUser?.uid?:""
-                    saveUserData(userId,userName,email, password)
+                    saveUserData(userId,userName,email, password,selectedUserType)
                 }
             }
             .addOnFailureListener {exception->
-                showProgress(false)
+                showHideProgressBar(false)
                 showToastMsg(exception.localizedMessage)
             }
     }
 
-    private fun saveUserData(userId:String,userName:String,email:String,password:String){
+    private fun saveUserData(userId:String,userName:String,email:String,password:String,type: UserType?){
         val database = Firebase.database.getReferenceFromUrl(BuildConfig.STORAGE_URL)
-        val user = User(userName,email,password,userId)
-        database.child("user").child(userId).setValue(user)
+        val user = User(userName = userName,email = email,password=password,userId = userId, categoryTypeID = type?.getID()
+            , details = null)
+        database.child("User").child(userId).setValue(user)
             .addOnCompleteListener {
-                showProgress(false)
-                findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToUserCategoryFragment())
+                if (it.isSuccessful)
+                    verifyUserEmail()
             }
             .addOnFailureListener { exception->
-                showProgress(false)
+                showHideProgressBar(false)
                 showToastMsg(exception.localizedMessage)
             }
-        /*database.addListenerForSingleValueEvent(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
-                    showToastMsg("Username already exists.")
-                }else{
-                    database.child(userId).setValue(user)
-                        .addOnCompleteListener {
-                            showToastMsg("signup successfully")
-                        }
-                        .addOnFailureListener { exception->
-                            showToastMsg(exception.localizedMessage)
-                        }
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                showToastMsg(error.message)
-            }
-        })*/
-
     }
 
-    private fun showProgress(show:Boolean){
-        binding.layoutProgress.root.isVisible = show
+    private fun verifyUserEmail(){
+        mAuth.currentUser?.sendEmailVerification()
+            ?.addOnCompleteListener {
+                showHideProgressBar(false)
+                showToastMsg(getString(R.string.verify_email_msg))
+                findNavController().navigateUp()
+            }
+            ?.addOnFailureListener {exception->
+                showHideProgressBar(false)
+                showToastMsg(exception.localizedMessage)
+            }
     }
+
 
 }

@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+<layout >
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="isStudent"
+            type="Boolean" />
+        <variable
+            name="isExpert"
+            type="Boolean" />
+        <variable
+            name="isDriver"
+            type="Boolean" />
+    </data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home" />
+        tools:context=".ui.home.HomeFragment">
 
-</FrameLayout>
+
+        <include
+            android:id="@+id/studentContainer"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/student_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="@{isStudent ? View.VISIBLE : View.GONE}"
+            />
+
+        <include
+            android:id="@+id/expertContainer"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/expert_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="@{isExpert ? View.VISIBLE : View.GONE}"
+            />
+
+        <include
+            android:id="@+id/driverContainer"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/driver_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="@{isDriver ? View.VISIBLE : View.GONE}"
+            />
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

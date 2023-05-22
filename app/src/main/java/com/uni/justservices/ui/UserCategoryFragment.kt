@@ -9,9 +9,10 @@ import androidx.navigation.fragment.findNavController
 import com.uni.justservices.R
 import com.uni.justservices.data.UserType
 import com.uni.justservices.databinding.FragmentUserCategoryBinding
+import com.uni.justservices.ui.base.BaseFragment
 
 
-class UserCategoryFragment : Fragment() {
+class UserCategoryFragment : BaseFragment() {
     private lateinit var binding:FragmentUserCategoryBinding
 
     override fun onCreateView(
@@ -25,7 +26,8 @@ class UserCategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.studentCard.setOnClickListener {
+        showHideToolbar(show = false)
+        /*binding.studentCard.setOnClickListener {
             findNavController().navigate(UserCategoryFragmentDirections.actionUserCategoryFragmentToCreateUserProfileFragment(
                 UserType.Student))
         }
@@ -36,7 +38,7 @@ class UserCategoryFragment : Fragment() {
         binding.busDriverCard.setOnClickListener {
             findNavController().navigate(UserCategoryFragmentDirections.actionUserCategoryFragmentToCreateUserProfileFragment(
                 UserType.BusDriver))
-        }
+        }*/
 
 
     }

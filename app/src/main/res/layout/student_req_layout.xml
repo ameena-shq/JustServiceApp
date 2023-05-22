@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/AppCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="@dimen/margin30"
+        android:layout_marginVertical="@dimen/margin10"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin16"
+            >
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileImg"
+                android:layout_width="@dimen/margin55"
+                android:layout_height="@dimen/margin55"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="30dip"
+                app:riv_oval="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/user_profile_img" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/userName"
+                style="@style/AppTheme.TextAppearance.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Ameena"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_14"
+                android:layout_marginStart="@dimen/margin10"
+                android:layout_marginEnd="@dimen/margin6"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toStartOf="@+id/acceptBtn"
+                app:layout_constraintBottom_toBottomOf="@+id/profileImg"
+                app:layout_constraintStart_toEndOf="@+id/profileImg"
+                app:layout_constraintTop_toTopOf="@+id/profileImg"
+                app:layout_constraintHorizontal_chainStyle="packed"
+
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/acceptBtn"
+                style="@style/RequestButton"
+                app:cornerRadius="@dimen/margin10"
+                android:backgroundTint="@color/green"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin4"
+                android:text="@string/accept"
+                android:textSize="@dimen/font_8"
+                app:layout_constraintEnd_toStartOf="@+id/deleteBtn"
+                app:layout_constraintTop_toTopOf="@id/profileImg"
+                app:layout_constraintBottom_toBottomOf="@id/profileImg"
+                />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deleteBtn"
+                style="@style/RequestButton"
+                app:cornerRadius="@dimen/margin10"
+                android:backgroundTint="@color/red"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="@string/delete"
+                android:textSize="@dimen/font_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/profileImg"
+                app:layout_constraintBottom_toBottomOf="@id/profileImg"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

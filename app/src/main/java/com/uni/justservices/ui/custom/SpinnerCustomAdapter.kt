@@ -1,4 +1,4 @@
-package com.uni.justservices.ui.start
+package com.uni.justservices.ui.custom
 
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +29,7 @@ class SpinnerCustomAdapter:BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var view = convertView
-        val holder:ItemHolder
+        val holder: ItemHolder
         if (view == null){
             val inflater = LayoutInflater.from(parent?.context)
             val binding = DropdownItemBinding.inflate(inflater)

@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -35,6 +36,13 @@ android {
         jvmTarget = '1.8'
     }
 
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
     buildFeatures {
         viewBinding = true
         dataBinding = true
@@ -55,10 +63,26 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-perf-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
     //implementation 'com.google.firebase:firebase-analytics-ktx'
-    //implementation 'com.google.firebase:firebase-messaging-ktx'
     //implementation 'com.google.firebase:firebase-crashlytics-ktx'
-
+    //data store
+    implementation "androidx.datastore:datastore:1.0.0"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    //moshi
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    implementation ("com.squareup.moshi:moshi-kotlin:1.13.0")
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.2'
+    //gson
+    implementation 'com.google.code.gson:gson:2.9.0'
+    //pick media
+    implementation 'com.github.Drjacky:ImagePicker:2.3.22'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    //rounded img
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    //
+    implementation 'com.github.mazenrashed:MoshiKotlinExtensions:1.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="isStudent"
             type="Boolean" />
@@ -16,362 +22,417 @@
             type="Boolean" />
     </data>
 
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.CreateUserProfileFragment">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin16"
-                android:layout_marginTop="@dimen/margin30"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_back_arrow" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/titleTxt"
-                style="@style/AppTheme.TextAppearance.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin30"
-                android:text="@string/profile"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/font_16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/imgContainer"
-                android:layout_width="@dimen/margin90"
-                android:layout_height="@dimen/margin90"
-                android:layout_marginTop="@dimen/margin45"
-                app:cardCornerRadius="@dimen/margin45"
-                app:cardElevation="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titleTxt">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/profileImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/user_profile_img" />
-
-            </com.google.android.material.card.MaterialCardView>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/infoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imgContainer"
-                app:layout_constraintBottom_toTopOf="@+id/createBtn"
-                android:layout_marginBottom="@dimen/margin16"
-                >
+                android:layout_height="match_parent"
+                tools:context=".ui.profile.CreateUserProfileFragment">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/userNameCard"
-                    style="@style/AppCard"
-                    android:layout_width="match_parent"
+                <!--            <androidx.appcompat.widget.AppCompatImageView-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginStart="@dimen/margin16"-->
+                <!--                android:layout_marginTop="@dimen/margin30"-->
+                <!--                app:layout_constraintStart_toStartOf="parent"-->
+                <!--                app:layout_constraintTop_toTopOf="parent"-->
+                <!--                app:srcCompat="@drawable/ic_back_arrow" />-->
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/titleTxt"
+                    style="@style/AppTheme.TextAppearance.Bold"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin20"
-                    android:layout_marginTop="@dimen/margin60"
+                    android:layout_marginTop="@dimen/margin30"
+                    android:text="@string/profile"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_16"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/userNameTextInput"
-                        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/imgContainer"
+                    android:layout_width="@dimen/margin90"
+                    android:layout_height="@dimen/margin90"
+                    android:layout_marginTop="@dimen/margin45"
+                    app:cardCornerRadius="@dimen/margin45"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleTxt">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/profileImg"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/gray_hint"
-                        app:boxBackgroundMode="none"
-                        app:errorEnabled="false">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/emailET"
-                            style="@style/AppTheme.TextAppearance.Bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/white"
-                            android:hint="@string/full_name"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:padding="@dimen/margin16"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/gray_hint"
-                            android:textSize="@dimen/font_16"
-
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/user_profile_img" />
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/ageCard"
-                    style="@style/AppCard"
-                    android:layout_width="0dp"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/uploadImg"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin20"
-                    app:layout_constraintEnd_toEndOf="@+id/userNameCard"
-                    app:layout_constraintStart_toStartOf="@+id/userNameCard"
-                    app:layout_constraintTop_toBottomOf="@id/userNameCard">
+                    app:layout_constraintBottom_toBottomOf="@+id/imgContainer"
+                    app:layout_constraintEnd_toEndOf="@+id/imgContainer"
+                    app:srcCompat="@drawable/upload_img" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/ageTextInput"
-                        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/infoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin16"
+                    app:layout_constraintBottom_toTopOf="@+id/createBtn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgContainer">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/firstNameCard"
+                        style="@style/AppCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/gray_hint"
-                        app:boxBackgroundMode="none"
-                        app:errorEnabled="false">
+                        android:layout_marginHorizontal="@dimen/margin20"
+                        android:layout_marginTop="@dimen/margin60"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/ageET"
-                            style="@style/AppTheme.TextAppearance.Bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/white"
-                            android:hint="@string/age"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:padding="@dimen/margin16"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/gray_hint"
-                            android:textSize="@dimen/font_16"
-
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/genderCard"
-                    style="@style/AppCard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin20"
-                    app:layout_constraintEnd_toEndOf="@+id/userNameCard"
-                    app:layout_constraintStart_toStartOf="@+id/userNameCard"
-                    app:layout_constraintTop_toBottomOf="@id/ageCard">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/genderTextInput"
-                        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/gray_hint"
-                        app:boxBackgroundMode="none"
-                        app:errorEnabled="false">
-
-                        <Spinner
-                            android:id="@+id/genderSpinner"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/firstNameTextInput"
+                            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:contentDescription="@string/gender"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/font_16" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/academicYearCard"
-                    style="@style/AppCard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin20"
-                    android:visibility="@{isStudent ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintEnd_toEndOf="@+id/userNameCard"
-                    app:layout_constraintStart_toStartOf="@+id/userNameCard"
-                    app:layout_constraintTop_toBottomOf="@id/genderCard">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/academicYearTextInput"
-                        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/gray_hint"
-                        app:boxBackgroundMode="none"
-                        app:errorEnabled="false">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/academicYearET"
-                            style="@style/AppTheme.TextAppearance.Bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/white"
-                            android:hint="@string/academic_year"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:padding="@dimen/margin16"
-                            android:textColor="@color/black"
                             android:textColorHint="@color/gray_hint"
-                            android:textSize="@dimen/font_16"
+                            app:boxBackgroundMode="none"
+                            app:errorEnabled="false">
 
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/firstNameET"
+                                style="@style/AppTheme.TextAppearance.Bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:hint="@string/first_name"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin16"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray_hint"
+                                android:textSize="@dimen/font_16"
 
-                </com.google.android.material.card.MaterialCardView>
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
 
+                    </com.google.android.material.card.MaterialCardView>
 
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/bioCard"
-                    style="@style/AppCard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin20"
-                    android:visibility="@{isExpert ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintEnd_toEndOf="@+id/userNameCard"
-                    app:layout_constraintStart_toStartOf="@+id/userNameCard"
-
-                    app:layout_constraintTop_toBottomOf="@id/academicYearCard"
-                    >
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/bioTextInput"
-                        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/lastNameCard"
+                        style="@style/AppCard"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/gray_hint"
-                        app:boxBackgroundMode="none"
-                        app:errorEnabled="false">
+                        android:layout_marginTop="@dimen/margin20"
+                        app:layout_constraintEnd_toEndOf="@+id/firstNameCard"
+                        app:layout_constraintStart_toStartOf="@+id/firstNameCard"
+                        app:layout_constraintTop_toBottomOf="@id/firstNameCard">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/bioET"
-                            style="@style/AppTheme.TextAppearance.Bold"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/lastNameTextInput"
+                            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/white"
-                            android:hint="@string/bio"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:padding="@dimen/margin16"
-                            android:textColor="@color/black"
+                            android:layout_height="wrap_content"
                             android:textColorHint="@color/gray_hint"
-                            android:textSize="@dimen/font_16"
+                            app:boxBackgroundMode="none"
+                            app:errorEnabled="false">
 
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/lastNameET"
+                                style="@style/AppTheme.TextAppearance.Bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:hint="@string/last_name"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin16"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray_hint"
+                                android:textSize="@dimen/font_16"
 
-                </com.google.android.material.card.MaterialCardView>
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/majorCard"
-                    style="@style/AppCard"
-                    android:layout_width="0dp"
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/ageCard"
+                        style="@style/AppCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin20"
+                        app:layout_constraintEnd_toEndOf="@+id/firstNameCard"
+                        app:layout_constraintStart_toStartOf="@+id/firstNameCard"
+                        app:layout_constraintTop_toBottomOf="@id/lastNameCard">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ageTextInput"
+                            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/gray_hint"
+                            app:boxBackgroundMode="none"
+                            app:errorEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ageET"
+                                style="@style/AppTheme.TextAppearance.Bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:hint="@string/age"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin16"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray_hint"
+                                android:textSize="@dimen/font_16"
+
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/genderCard"
+                        style="@style/AppCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin20"
+                        app:layout_constraintEnd_toEndOf="@+id/firstNameCard"
+                        app:layout_constraintStart_toStartOf="@+id/firstNameCard"
+                        app:layout_constraintTop_toBottomOf="@id/ageCard">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/genderTextInput"
+                            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/gray_hint"
+                            app:boxBackgroundMode="outline"
+                            app:endIconMode="dropdown_menu"
+                            app:errorEnabled="false">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/genderSpinner"
+                                style="@style/AppTheme.TextAppearance.Bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:hint="@string/gender"
+                                android:textColor="@color/black"
+                                android:enabled="false"
+                                android:textColorHint="@color/gray_hint"
+                                android:padding="@dimen/margin16"
+                                android:textSize="@dimen/font_16" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/academicYearCard"
+                        style="@style/AppCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin20"
+                        android:visibility="@{isStudent ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintEnd_toEndOf="@+id/firstNameCard"
+                        app:layout_constraintStart_toStartOf="@+id/firstNameCard"
+                        app:layout_constraintTop_toBottomOf="@id/genderCard">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/academicYearTextInput"
+                            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/gray_hint"
+                            app:boxBackgroundMode="none"
+                            app:errorEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/academicYearET"
+                                style="@style/AppTheme.TextAppearance.Bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:hint="@string/academic_year"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin16"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray_hint"
+                                android:textSize="@dimen/font_16"
+
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/bioCard"
+                        style="@style/AppCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin20"
+                        android:visibility="@{isExpert ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintEnd_toEndOf="@+id/firstNameCard"
+                        app:layout_constraintStart_toStartOf="@+id/firstNameCard"
+
+                        app:layout_constraintTop_toBottomOf="@id/academicYearCard">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/bioTextInput"
+                            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/gray_hint"
+                            app:boxBackgroundMode="none"
+                            app:errorEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/bioET"
+                                style="@style/AppTheme.TextAppearance.Bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:hint="@string/bio"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin16"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray_hint"
+                                android:textSize="@dimen/font_16"
+
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/majorCard"
+                        style="@style/AppCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin20"
+                        android:layout_marginBottom="@dimen/margin16"
+                        android:visibility="@{isExpert || isStudent ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/firstNameCard"
+                        app:layout_constraintStart_toStartOf="@+id/firstNameCard"
+                        app:layout_constraintTop_toBottomOf="@id/bioCard">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/majorTextInput"
+                            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/gray_hint"
+                            app:boxBackgroundMode="none"
+                            app:errorEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/majorET"
+                                style="@style/AppTheme.TextAppearance.Bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:hint="@string/major"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin16"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray_hint"
+                                android:textSize="@dimen/font_16"
+
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/busNumCard"
+                        style="@style/AppCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin20"
+                        android:layout_marginBottom="@dimen/margin16"
+                        android:visibility="@{isDriver ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/firstNameCard"
+                        app:layout_constraintStart_toStartOf="@+id/firstNameCard"
+                        app:layout_constraintTop_toBottomOf="@id/bioCard">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/busNumTextInput"
+                            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/gray_hint"
+                            app:boxBackgroundMode="none"
+                            app:errorEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/busNumET"
+                                style="@style/AppTheme.TextAppearance.Bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:hint="@string/bus_number"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin16"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray_hint"
+                                android:textSize="@dimen/font_16"
+
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/createBtn"
+                    style="@style/AppButton"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin20"
-                    android:layout_marginBottom="@dimen/margin16"
-                    android:visibility="@{isExpert || isStudent ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintEnd_toEndOf="@+id/userNameCard"
-                    app:layout_constraintStart_toStartOf="@+id/userNameCard"
-                    app:layout_constraintTop_toBottomOf="@id/bioCard"
+                    android:layout_marginHorizontal="@dimen/margin16"
+                    android:layout_marginVertical="@dimen/margin16"
+                    android:paddingTop="@dimen/margin16"
+                    android:paddingBottom="@dimen/margin16"
+                    android:text="@string/create"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    >
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/infoContainer" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/majorTextInput"
-                        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/gray_hint"
-                        app:boxBackgroundMode="none"
-                        app:errorEnabled="false">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/majorET"
-                            style="@style/AppTheme.TextAppearance.Bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/white"
-                            android:hint="@string/major"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:padding="@dimen/margin16"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/gray_hint"
-                            android:textSize="@dimen/font_16"
-
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/busNumCard"
-                    style="@style/AppCard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin20"
-                    android:layout_marginBottom="@dimen/margin16"
-                    android:visibility="@{isDriver ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintEnd_toEndOf="@+id/userNameCard"
-                    app:layout_constraintStart_toStartOf="@+id/userNameCard"
-                    app:layout_constraintTop_toBottomOf="@id/bioCard"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    >
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/busNumTextInput"
-                        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/gray_hint"
-                        app:boxBackgroundMode="none"
-                        app:errorEnabled="false">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/busNumET"
-                            style="@style/AppTheme.TextAppearance.Bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/white"
-                            android:hint="@string/bus_number"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:padding="@dimen/margin16"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/gray_hint"
-                            android:textSize="@dimen/font_16"
-
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </com.google.android.material.card.MaterialCardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/createBtn"
-                style="@style/AppButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin16"
-
-                android:paddingTop="@dimen/margin16"
-                android:paddingBottom="@dimen/margin16"
-                android:text="@string/create"
-                app:layout_constraintTop_toBottomOf="@+id/infoContainer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

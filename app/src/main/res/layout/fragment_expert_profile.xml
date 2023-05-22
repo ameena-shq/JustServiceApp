@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profile.ExpertProfileFragment">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/profileImg"
+        android:layout_width="@dimen/margin100"
+        android:layout_height="@dimen/margin100"
+        android:layout_marginTop="@dimen/margin20"
+        android:scaleType="centerCrop"
+        app:riv_corner_radius="50dip"
+        app:riv_oval="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/user_profile_img" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/userName"
+        style="@style/AppTheme.TextAppearance.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Ameena"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/font_14"
+        android:layout_marginTop="@dimen/margin10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImg"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/majorTitle"
+        style="@style/AppTheme.TextAppearance.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/major2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14"
+        android:layout_marginTop="@dimen/margin40"
+        android:layout_marginStart="@dimen/margin10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/majorValue"
+        style="@style/AppTheme.TextAppearance.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Ameena"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/font_14"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/majorTitle"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bioTitle"
+        style="@style/AppTheme.TextAppearance.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bio2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14"
+        android:layout_marginTop="@dimen/margin40"
+        android:layout_marginStart="@dimen/margin10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/majorValue"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bioValue"
+        style="@style/AppTheme.TextAppearance.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Ameena"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/font_14"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bioTitle"
+        app:layout_constraintBottom_toTopOf="@+id/chatBtn"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/chatBtn"
+        style="@style/AppButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin55"
+        android:layout_marginTop="@dimen/margin80"
+        android:paddingTop="@dimen/margin16"
+        android:paddingBottom="@dimen/margin16"
+        android:text="@string/chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bioValue" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
