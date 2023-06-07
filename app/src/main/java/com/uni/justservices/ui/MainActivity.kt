@@ -100,9 +100,10 @@ class MainActivity : AppCompatActivity(),AppListener {
         runBlocking {
             val user = UserLocalDataSource(this@MainActivity).getUserData()
             user?.let { data->
-                Glide.with(this@MainActivity)
-                    .load(data.img)
-                    .into(binding.toolbar.userProfileImg)
+                if (data.img.isNotEmpty())
+                    Glide.with(this@MainActivity)
+                        .load(data.img)
+                        .into(binding.toolbar.userProfileImg)
             }
         }
     }

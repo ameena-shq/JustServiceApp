@@ -161,7 +161,12 @@
         android:id="@+id/studentBusScheduleFragment"
         android:name="com.uni.justservices.ui.home.student.StudentBusScheduleFragment"
         android:label="fragment_bus_schedule"
-        tools:layout="@layout/fragment_bus_schedule" />
+        tools:layout="@layout/fragment_bus_schedule" >
+        <argument
+            android:name="showBottomNavigationBar"
+            android:defaultValue="false"
+            />
+    </fragment>
     <fragment
         android:id="@+id/expertListFragment"
         android:name="com.uni.justservices.ui.home.student.ExpertListFragment"
