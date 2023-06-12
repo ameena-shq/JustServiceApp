@@ -75,13 +75,13 @@ class SignInFragment : BaseFragment() {
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    if (mAuth.currentUser?.isEmailVerified == true) {
+                    goTo()
+                    /*if (mAuth.currentUser?.isEmailVerified == true) {
                         goTo()
                     }
                     else{
                         showToastMsg(getString(R.string.verify_email_msg))
-                    }
-                        //resendLink()
+                    }*/
                 }
             }
             .addOnFailureListener { exception ->

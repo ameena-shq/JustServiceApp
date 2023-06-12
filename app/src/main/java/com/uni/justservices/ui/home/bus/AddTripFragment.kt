@@ -5,6 +5,8 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -16,9 +18,12 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.uni.justservices.BuildConfig
 import com.uni.justservices.R
+import com.uni.justservices.data.LocalUser
 import com.uni.justservices.data.Trip
+import com.uni.justservices.data.local.UserLocalDataSource
 import com.uni.justservices.databinding.FragmentAddTripBinding
 import com.uni.justservices.ui.base.BaseFragment
+import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,6 +33,15 @@ class AddTripFragment : BaseFragment() {
     private val navArgs:AddTripFragmentArgs by navArgs()
     private var editTrip:Boolean = false
     private lateinit var auth :FirebaseAuth
+    private  var selectedCity:String?=null
+    private  var selectedStation:String?=null
+    private lateinit var cityAdapter : ArrayAdapter<String>
+    private lateinit var stationAdapter : ArrayAdapter<String>
+    //
+    private lateinit var cityList : MutableList<String>
+    private lateinit var stationMap : MutableMap<Int,MutableList<String>>
+    private var trip:Trip?=null
+    private var currentUser: LocalUser?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,11 +54,65 @@ class AddTripFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val trip = navArgs.trip
+        setUpAdapters(editTrip)
+        runBlocking {
+            val localDB = UserLocalDataSource(requireContext())
+            currentUser = localDB.getUserData()
+        }
+        trip = navArgs.trip
         trip?.let {
             editTrip = true
             updateUI(it)
         }
+
+        binding.cityET.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedCity = cityAdapter.getItem(position)
+                val newList = stationMap[position]?: mutableListOf()
+                stationAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,newList)
+                binding.stationET.adapter = stationAdapter
+                if (editTrip){
+                    val stationPos = stationAdapter.getPosition(trip?.station)
+                    if (stationPos != -1) {
+                        binding.stationET.setSelection(stationPos)
+                    }
+                    else{
+                        binding.stationET.setSelection(0)
+                    }
+
+                }
+                else{
+                    binding.stationET.setSelection(0)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
+
+        binding.stationET.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedStation = stationAdapter.getItem(position)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+
         binding.addTripBtn.setOnClickListener {
             if (editTrip)
                 editTrip(navArgs.trip)
@@ -55,7 +123,6 @@ class AddTripFragment : BaseFragment() {
         binding.dayET.setOnClickListener {
             val datePicker = MaterialDatePicker.Builder.datePicker().build()
             datePicker.show(requireActivity().supportFragmentManager,"DatePicker")
-
             datePicker.addOnPositiveButtonClickListener {
                 val cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
                 cal.time = Date(it)
@@ -86,9 +153,24 @@ class AddTripFragment : BaseFragment() {
         }
     }
 
+    private fun setUpAdapters(isEditMode:Boolean){
+        cityList = arrayListOf<String>("Ajloun","Amman","Mafraq","Jarash","Zarqa","Irbid")
+        stationMap = mutableMapOf<Int,MutableList<String>>()
+        stationMap[0] = mutableListOf("Ajloun Station")
+        stationMap[1] = mutableListOf("North Station")
+        stationMap[2] = mutableListOf("Northern Mafraq Station")
+        stationMap[3] = mutableListOf("New Jarash Station")
+        stationMap[4] = mutableListOf("Zarqa Station")
+        stationMap[5] = mutableListOf("Northern Station","Sheikh khalil Station","New Ghor Station","Ramtha Station","Amman Station")
+        cityAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,cityList)
+        binding.cityET.adapter = cityAdapter
+    }
+
     private fun updateUI(trip: Trip){
-        binding.cityET.setText(trip.city)
-        binding.stationET.setText(trip.station)
+        val cityPos = cityAdapter.getPosition(trip.city)
+        binding.cityET.setSelection(cityPos)
+        val stationPos = cityAdapter.getPosition(trip.city)
+        binding.stationET.setSelection(stationPos)
         binding.dayET.text = trip.date
         binding.timeET.text = trip.time
         binding.addTripBtn.text = getString(R.string.edit_trip)
@@ -96,8 +178,8 @@ class AddTripFragment : BaseFragment() {
     }
 
     private fun editTrip(trip: Trip?){
-        val station = binding.stationET.text.toString()
-        val city = binding.cityET.text.toString()
+        val station = selectedStation ?: ""
+        val city = selectedCity ?: ""
         val date = binding.dayET.text.toString()
         val time = binding.timeET.text.toString()
         if (TextUtils.isEmpty(station.trim()) || TextUtils.isEmpty(city.trim())
@@ -106,7 +188,7 @@ class AddTripFragment : BaseFragment() {
             return
         }
         val tripId = trip?.tripID?:""
-        val newTrip = Trip(auth.currentUser?.uid?:"",city,station,date,trip?.day?:"",time,tripId)
+        val newTrip = Trip(auth.currentUser?.uid?:"",city,station,date,trip?.day?:"",time,tripId,currentUser?.details?.busNumber?:"")
         val db = Firebase.database.getReferenceFromUrl(BuildConfig.STORAGE_URL)
             .child("Trips").child(tripId).setValue(newTrip)
             .addOnCompleteListener {
@@ -123,8 +205,8 @@ class AddTripFragment : BaseFragment() {
     }
 
     private fun addTrip(){
-        val station = binding.stationET.text.toString()
-        val city = binding.cityET.text.toString()
+        val station = selectedStation ?: ""
+        val city = selectedCity ?: ""
         val date = binding.dayET.text.toString()
         val time = binding.timeET.text.toString()
         if (TextUtils.isEmpty(station.trim()) || TextUtils.isEmpty(city.trim())
@@ -134,7 +216,7 @@ class AddTripFragment : BaseFragment() {
         }
         showHideProgressBar(true)
         val id = UUID.randomUUID().toString()
-        val trip = Trip(auth.currentUser?.uid?:"",city,station,date,selectedDay,time,id)
+        val trip = Trip(auth.currentUser?.uid?:"",city,station,date,selectedDay,time,id,currentUser?.details?.busNumber?:"")
         val db = Firebase.database.getReferenceFromUrl(BuildConfig.STORAGE_URL)
             .child("Trips").child(id).setValue(trip)
             .addOnCompleteListener {

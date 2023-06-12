@@ -20,7 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/margin20"
+            android:padding="@dimen/margin10"
             >
 
             <com.makeramen.roundedimageview.RoundedImageView
@@ -43,21 +43,54 @@
                 android:textColor="@color/blue"
                 android:textSize="@dimen/font_14"
                 android:layout_marginStart="@dimen/margin10"
+                app:layout_constraintBottom_toTopOf="@+id/userMajor"
+                app:layout_constraintStart_toEndOf="@+id/profileImg"
+                app:layout_constraintTop_toTopOf="@+id/profileImg"
+                app:layout_constraintEnd_toEndOf="@+id/btnContainer"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_bias="0"
+                android:ellipsize="end"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/userMajor"
+                style="@style/AppTheme.TextAppearance.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Ameena"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_12"
+                android:layout_marginStart="@dimen/margin10"
                 app:layout_constraintBottom_toBottomOf="@+id/profileImg"
                 app:layout_constraintStart_toEndOf="@+id/profileImg"
-                app:layout_constraintTop_toTopOf="@+id/profileImg" />
+                app:layout_constraintTop_toBottomOf="@+id/userName"
+                app:layout_constraintEnd_toEndOf="@+id/btnContainer"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_bias="0"
+                android:ellipsize="end"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/profileImg"
+                app:layout_constraintBottom_toBottomOf="@id/profileImg"
+                >
+
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sendRequestBtn"
                 style="@style/AppButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin10"
                 android:text="@string/send_request"
                 android:textSize="@dimen/font_8"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/profileImg"
-                app:layout_constraintBottom_toBottomOf="@id/profileImg"
+                app:layout_constraintTop_toTopOf="parent"
+
                  />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/chatBtn"
@@ -65,13 +98,13 @@
                 android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin10"
                 android:text="@string/chat"
                 android:textSize="@dimen/font_8"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/profileImg"
-                app:layout_constraintBottom_toBottomOf="@id/profileImg"
+                app:layout_constraintTop_toTopOf="parent"
                 />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

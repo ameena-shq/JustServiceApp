@@ -24,31 +24,60 @@
         android:layout_height="match_parent"
         tools:context=".ui.profile.ProfileFragment">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/profileImg"
-            android:layout_width="@dimen/margin100"
-            android:layout_height="@dimen/margin100"
-            android:layout_marginTop="@dimen/margin20"
-            android:scaleType="centerCrop"
-            android:src="@drawable/user_profile_img"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/chat_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="50dip"
-            app:riv_oval="false" />
+            app:layout_constraintBottom_toTopOf="@+id/accountInfo"
+            android:paddingBottom="@dimen/margin10"
+            >
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profileImg"
+                android:layout_width="@dimen/margin100"
+                android:layout_height="@dimen/margin100"
+                android:layout_marginTop="@dimen/margin20"
+                android:scaleType="centerCrop"
+                android:src="@drawable/user_profile_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="50dip"
+                app:riv_oval="false" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/userName"
+                style="@style/AppTheme.TextAppearance.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin10"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profileImg"
+                tools:text="Ameena"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/userName"
+            android:id="@+id/accountInfo"
             style="@style/AppTheme.TextAppearance.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin10"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/font_14"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_marginTop="@dimen/margin20"
+            android:text="@string/account_info"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_20"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profileImg"
-            tools:text="Ameena" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContainer" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/ageTitle"
@@ -56,12 +85,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin10"
-            android:layout_marginTop="@dimen/margin40"
+            android:layout_marginTop="@dimen/margin10"
             android:text="@string/age2"
             android:textColor="@color/black"
             android:textSize="@dimen/font_16"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userName" />
+            app:layout_constraintTop_toBottomOf="@+id/accountInfo" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/ageValue"
@@ -109,10 +138,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin10"
             android:layout_marginTop="@dimen/margin10"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender"
             android:visibility="@{isStudent ? View.VISIBLE : View.GONE}"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
 
         <include
             android:id="@+id/expertView"
@@ -121,10 +149,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin10"
             android:layout_marginTop="@dimen/margin10"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender"
             android:visibility="@{isExpert ? View.VISIBLE : View.GONE}"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
 
         <include
             android:id="@+id/driverView"
@@ -133,25 +160,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin10"
             android:layout_marginTop="@dimen/margin10"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender"
             android:visibility="@{isDriver ? View.VISIBLE : View.GONE}"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutBtn"
             style="@style/AppButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin55"
+            android:layout_marginHorizontal="@dimen/margin100"
             android:layout_marginVertical="@dimen/margin20"
             android:layout_marginTop="@dimen/margin80"
             android:paddingTop="@dimen/margin16"
             android:paddingBottom="@dimen/margin16"
             android:text="@string/logout"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

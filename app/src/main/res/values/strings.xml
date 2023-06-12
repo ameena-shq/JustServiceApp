@@ -71,5 +71,6 @@
     <string name="academic_year2">Academic Year: </string>
     <string name="bus_number2">Bus Number: </string>
     <string name="logout">Logout</string>
+    <string name="account_info">Account Info</string>
 
 </resources>

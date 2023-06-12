@@ -50,7 +50,7 @@ class DriverTripListFragment : BaseFragment(), DriverTripAdapter.TripClickListen
                 override fun onDataChange(snapshot: DataSnapshot) {
                     showHideProgressBar(false)
                     val list =snapshot.getValue<HashMap<String,Trip>>()
-                    val myTrips = list?.map { it.value }
+                    val myTrips = list?.toSortedMap()?.map { it.value }
                         ?.filter { it.userId == currentUser }
                     myTrips?.let {
                         adapter.setItems(myTrips)

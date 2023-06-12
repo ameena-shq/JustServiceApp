@@ -51,8 +51,10 @@ class CreateUserProfileFragment : BaseFragment() {
     private lateinit var launcher: ActivityResultLauncher<Intent>
     private var profileImgUrl = ""
     private var selectedGender:String?=null
+    private var selectedMajor:String?=null
     private lateinit var eventListener: ValueEventListener
     private lateinit var databaseRef: DatabaseReference
+    private lateinit var majorAdapter:ArrayAdapter<String>
 
 
     override fun onCreateView(
@@ -98,6 +100,7 @@ class CreateUserProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showHideToolbar(show = false)
+        setUpMajorAdapter()
         userType = navArgs.userType
         when(userType){
             UserType.Student->{
@@ -117,14 +120,90 @@ class CreateUserProfileFragment : BaseFragment() {
         binding.genderSpinner.setOnItemClickListener { parent, view, position, id ->
             selectedGender = genderAdapter.getItem(position)
         }
+
+        binding.majorET.setOnItemClickListener { parent, view, position, id ->
+            selectedMajor = majorAdapter.getItem(position)
+        }
         binding.createBtn.setOnClickListener {
             createUser()
-            //findNavController().navigate(CreateUserProfileFragmentDirections.actionCreateUserProfileFragmentToHomeFragment(userType=UserType.BusDriver))
         }
         binding.uploadImg.setOnClickListener {
             selectImg()
         }
 
+    }
+
+    private fun setUpMajorAdapter(){
+        val majorList = arrayListOf(
+            "Aeronautical Engineering" ,
+            "Biomedical Engineering" ,
+            "Chemical Engineering" ,
+            "Civil Engineering" ,
+            "Electrical Engineering" ,
+            "Industrial Engineering" ,
+            "Mechanical Engineering" ,
+            "Nuclear Engineering" ,
+            "Computer Engineering" ,
+            "Computer Information Systems" ,
+            "Computer Science" ,
+            "Network Engineering and Security" ,
+            "Software Engineering" ,
+            "Cyber Security" ,
+            "Data science" ,
+            "Artificial Intelligence" ,
+            "Accident and Emergency Medicine" ,
+            "Anatomy" ,
+            "Anesthesia and Recovery" ,
+            "Dermatology" ,
+            "Diagnostic Radiology and Nuclear Medicine" ,
+            "General Surgery and Urology" ,
+            "Health Management and Policy" ,
+            "Internal Medicine" ,
+            "Legal Medicine, Toxicology, and Forensic Medicine" ,
+            "Neurology" ,
+            "Neurosciences" ,
+            "Neurosurgery" ,
+            "Obstetrics and Gynecology" ,
+            "Pathology and Microbiology" ,
+            "Pediatrics and Neonatology" ,
+            "Pharmacology" ,
+            "Physiology and Biochemistry" ,
+            "Psychiatry" ,
+            "Public Health and Community Medicine" ,
+            "Special Surgery" ,
+            "Conservative Dentistry" ,
+            "Oral Medicine and Oral Surgery" ,
+            "Preventive Dentistry" ,
+            "Prosthodontist" ,
+            "Clinical Pharmacy" ,
+            "Medicinal Chemistry and Pharmacology" ,
+            "Pharmaceutical Technology" ,
+            "Adult Health Nursing" ,
+            "Community and Mental Health Nursing" ,
+            "Maternal and Child Health Nursing" ,
+            "Midwifery" ,
+            "Animal Production" ,
+            "Natural Resources and Environment" ,
+            "Nutrition and Food Technology" ,
+            "Plant Production" ,
+            "Basic Medical Veterinary Sciences" ,
+            "Clinical Veterinary Medical Sciences" ,
+            "Pathology and Public Health" ,
+            "Biotechnology and Genetic Engineering" ,
+            "Chemistry " ,
+            "English for Applied Studies " ,
+            "Basic Sciences and Humanities " ,
+            "Mathematics and Statistics " ,
+            "Physics " ,
+            "Allied Medical Sciences" ,
+            "Applied Dental Sciences" ,
+            "Medical Laboratory Sciences" ,
+            "Rehabilitation Sciences" ,
+            "Architecture" ,
+            "Design and Visual Communication" ,
+            "City Planning and Design")
+        majorAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,majorList)
+        binding.majorET.setAdapter(majorAdapter)
     }
 
 
@@ -146,26 +225,27 @@ class CreateUserProfileFragment : BaseFragment() {
         val lastName = binding.lastNameET.text.toString()
         val age = binding.ageET.text.toString()
         val academicYear = binding.academicYearET.text.toString()
-        val major = binding.majorET.text.toString()
+        val major = selectedMajor ?: ""
         val bio = binding.bioET.text.toString()
         val busNum = binding.busNumET.text.toString()
+        val gender = selectedGender ?:""
         when(userType){
             UserType.Student->{
-                if (firstName.trim().isBlank() || lastName.trim().isBlank() || age.trim().isBlank()|| selectedGender == null
+                if (firstName.trim().isBlank() || lastName.trim().isBlank() || age.trim().isBlank()|| gender.trim().isBlank()
                     || academicYear.trim().isBlank() || major.trim().isBlank()){
                     showToastMsg(resources.getString(R.string.empty_field_error))
                     return
                 }
             }
             UserType.Expert->{
-                if (firstName.trim().isBlank() || lastName.trim().isBlank() || age.trim().isBlank()|| selectedGender == null
+                if (firstName.trim().isBlank() || lastName.trim().isBlank() || age.trim().isBlank()|| gender.trim().isBlank()
                     || bio.trim().isBlank() || major.trim().isBlank()){
                     showToastMsg(resources.getString(R.string.empty_field_error))
                     return
                 }
             }
             UserType.BusDriver->{
-                if (firstName.trim().isBlank() || lastName.trim().isBlank() || age.trim().isBlank()|| selectedGender == null
+                if (firstName.trim().isBlank() || lastName.trim().isBlank() || age.trim().isBlank()|| gender.trim().isBlank()
                     || busNum.trim().isBlank()){
                     showToastMsg(resources.getString(R.string.empty_field_error))
                     return

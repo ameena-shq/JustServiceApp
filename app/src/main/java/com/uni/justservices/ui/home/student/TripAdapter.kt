@@ -22,6 +22,7 @@ class TripAdapter: RecyclerView.Adapter<TripAdapter.MyViewHolder>() {
         holder.station.text = trip.station
         holder.date.text = trip.date
         holder.time.text = trip.time
+        holder.busNumber.text = trip.busNumber
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -37,6 +38,7 @@ class TripAdapter: RecyclerView.Adapter<TripAdapter.MyViewHolder>() {
         val station = view.stationValue
         val date = view.dateValue
         val time = view.timeValue
+        val busNumber = view.numberValue
     }
 
 

@@ -195,9 +195,7 @@
         app:layout_constraintStart_toStartOf="@+id/cityContainer"
         app:layout_constraintEnd_toEndOf="@+id/cityContainer"
         app:layout_constraintTop_toBottomOf="@+id/dateContainer"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="@dimen/margin20"
-        android:layout_marginBottom="@dimen/margin10"
         android:background="@drawable/rounded_white_bg"
         >
 
@@ -244,6 +242,67 @@
             android:textColor="@color/black"
             android:textSize="@dimen/font_12"
             tool:text="12:45 PM"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/numberContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/cityContainer"
+        app:layout_constraintEnd_toEndOf="@+id/cityContainer"
+        app:layout_constraintTop_toBottomOf="@+id/timeContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/margin20"
+        android:layout_marginBottom="@dimen/margin10"
+        android:background="@drawable/rounded_white_bg"
+        >
+
+        <TextView
+            android:id="@+id/numberTitle"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/bus_number"
+            />
+
+        <TextView
+            android:id="@+id/numberdot"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            android:text="@string/dot"
+            />
+
+        <TextView
+            android:id="@+id/numberValue"
+            style="@style/AppTheme.TextAppearance.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/margin16"
+            android:layout_marginEnd="@dimen/margin20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_12"
+            tool:text="1142"
             />
 
 

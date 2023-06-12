@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.lifecycle.lifecycleScope
+import android.view.animation.AnimationUtils
+import com.uni.justservices.R
 import com.uni.justservices.data.NavigationDirectionEnum
 import com.uni.justservices.data.local.UserLocalDataSource
 import com.uni.justservices.databinding.ActivitySplashBinding
 import com.uni.justservices.ui.MainActivity
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class SplashActivity : AppCompatActivity() {
@@ -20,6 +20,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.appLogo.root.startAnimation(AnimationUtils.loadAnimation(this, R.anim.zoom_in))
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
@@ -28,9 +29,6 @@ class SplashActivity : AppCompatActivity() {
                     val user = localDB.getUserData()
                     user?.let {
                         intent.putExtra(OPEN_SCREEN, NavigationDirectionEnum.HOME)
-                        /*it.details?.let {
-                            intent.putExtra(OPEN_SCREEN, NavigationDirectionEnum.HOME)
-                        }?: intent.putExtra(OPEN_SCREEN, NavigationDirectionEnum.CREATE_PROFILE)*/
                     }?:let {
                         intent.putExtra(OPEN_SCREEN, NavigationDirectionEnum.LOGIN)
                     }
@@ -39,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
                 }
 
             }
-        ,300)
+        ,600)
     }
 
     companion object{

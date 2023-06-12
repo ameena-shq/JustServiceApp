@@ -291,7 +291,6 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/bioCard"
                         style="@style/AppCard"
@@ -351,21 +350,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColorHint="@color/gray_hint"
-                            app:boxBackgroundMode="none"
+                            app:boxBackgroundMode="outline"
+                            app:endIconMode="dropdown_menu"
                             app:errorEnabled="false">
 
-                            <com.google.android.material.textfield.TextInputEditText
+                            <AutoCompleteTextView
                                 android:id="@+id/majorET"
                                 style="@style/AppTheme.TextAppearance.Bold"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:background="@color/white"
                                 android:hint="@string/major"
                                 android:inputType="text"
                                 android:maxLines="1"
-                                android:padding="@dimen/margin16"
                                 android:textColor="@color/black"
+                                android:enabled="false"
                                 android:textColorHint="@color/gray_hint"
+                                android:padding="@dimen/margin16"
                                 android:textSize="@dimen/font_16"
 
                                 />

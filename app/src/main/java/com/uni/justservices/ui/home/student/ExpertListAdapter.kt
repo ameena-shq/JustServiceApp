@@ -37,6 +37,7 @@ class ExpertListAdapter(val context: Context): RecyclerView.Adapter<ExpertListAd
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user = expertList[position]
         holder.userName.text = "${user?.details?.firstName} ${user?.details?.lastName}"
+        holder.userMajor.text = user.details?.major
         if (user.img.isNotEmpty())
             Glide.with(context)
                 .load(user.img)
@@ -85,6 +86,7 @@ class ExpertListAdapter(val context: Context): RecyclerView.Adapter<ExpertListAd
     inner class MyViewHolder(view: ExpertViewBinding):RecyclerView.ViewHolder(view.root){
         val userImg = view.profileImg
         val userName = view.userName
+        val userMajor = view.userMajor
         val requestBtn = view.sendRequestBtn
         val chatBtn = view.chatBtn
     }

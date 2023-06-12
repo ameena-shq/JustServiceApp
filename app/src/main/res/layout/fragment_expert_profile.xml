@@ -78,16 +78,23 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/bioValue"
         style="@style/AppTheme.TextAppearance.Bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         tools:text="Ameena"
+        android:gravity="start"
         android:textColor="@color/blue"
         android:textSize="@dimen/font_14"
         android:layout_marginTop="@dimen/margin10"
         android:layout_marginStart="@dimen/margin10"
+        android:layout_marginEnd="@dimen/margin10"
+        android:layout_marginBottom="@dimen/margin20"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bioTitle"
         app:layout_constraintBottom_toTopOf="@+id/chatBtn"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_chainStyle="packed"
         />
 
     <com.google.android.material.button.MaterialButton
@@ -95,14 +102,17 @@
         style="@style/AppButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin55"
+        android:layout_marginHorizontal="@dimen/margin100"
         android:layout_marginTop="@dimen/margin80"
+        android:layout_marginBottom="@dimen/margin20"
         android:paddingTop="@dimen/margin16"
         android:paddingBottom="@dimen/margin16"
         android:text="@string/chat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bioValue" />
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

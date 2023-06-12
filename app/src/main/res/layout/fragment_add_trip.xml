@@ -46,31 +46,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/cityTextInput"
-                    style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                <Spinner
+                    android:id="@+id/cityET"
+                    style="@style/AppTheme.TextAppearance.Bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/gray_hint"
-                    app:boxBackgroundMode="none"
-                    app:errorEnabled="false">
+                    android:textColor="@color/black"
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/cityET"
-                        style="@style/AppTheme.TextAppearance.Bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:hint="@string/city"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:padding="@dimen/margin16"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/gray_hint"
-                        android:textSize="@dimen/font_16"
-
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
+                    />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -84,31 +67,14 @@
                 app:layout_constraintStart_toStartOf="@+id/cityCard"
                 app:layout_constraintTop_toBottomOf="@id/cityCard">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/stationTextInput"
-                    style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"
+                <Spinner
+                    android:id="@+id/stationET"
+                    style="@style/AppTheme.TextAppearance.Bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/gray_hint"
-                    app:boxBackgroundMode="none"
-                    app:errorEnabled="false">
+                    android:textColor="@color/black"
+                    />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/stationET"
-                        style="@style/AppTheme.TextAppearance.Bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:hint="@string/Station"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:padding="@dimen/margin16"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/gray_hint"
-                        android:textSize="@dimen/font_16"
-
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
 
             </com.google.android.material.card.MaterialCardView>
 

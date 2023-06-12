@@ -88,5 +88,6 @@ data class Trip(
     val date: String ="",
     val day:String="",
     val time:String="",
-    val tripID:String=""
+    val tripID:String="",
+    val busNumber:String=""
 ):Parcelable
