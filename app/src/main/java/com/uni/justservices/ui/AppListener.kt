@@ -6,6 +6,6 @@ interface AppListener {
     fun showHideProgress(show: Boolean)
     fun relaunchApp()
     fun fetchUserProfileImg()
-    fun updateNotificationBadge(count:Int)
-    fun updateChatBadge(count:Int)
+    //fun updateNotificationBadge(count:Int)
+    //fun updateChatBadge(count:Int)
 }

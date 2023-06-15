@@ -122,7 +122,7 @@ class ChatFragment : BaseFragment() {
                 chatList?.let {
                     adapter.setList(it)
                 }
-                updateChatBadge(chatList?.size ?: 0)
+                //updateChatBadge(chatList?.size ?: 0)
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -83,11 +83,11 @@ class HomeFragment : BaseFragment() {
             when(type){
                 UserType.Student-> {
                     binding.isStudent = true
-                    activeBadge()
+                    //activeBadge()
                 }
                 UserType.Expert-> {
                     binding.isExpert = true
-                    activeBadge()
+                    //activeBadge()
                 }
                 UserType.BusDriver->binding.isDriver = true
                 UserType.Non->{
@@ -97,11 +97,11 @@ class HomeFragment : BaseFragment() {
                         when(user?.categoryTypeID){
                             UserType.Student.getID()-> {
                                 binding.isStudent = true
-                                activeBadge()
+                                //activeBadge()
                             }
                             UserType.Expert.getID()-> {
                                 binding.isExpert = true
-                                activeBadge()
+                                //activeBadge()
                             }
                             UserType.BusDriver.getID()->binding.isDriver = true
                         }
@@ -132,10 +132,10 @@ class HomeFragment : BaseFragment() {
 
     }
 
-    private fun activeBadge(){
+    /*private fun activeBadge(){
         fetchNotificationLiveData()
         fetchChatLiveData()
-    }
+    }*/
 
     private fun checkNotificationPermission(){
         when{
@@ -171,7 +171,7 @@ class HomeFragment : BaseFragment() {
             .show()
     }
 
-    private fun fetchNotificationLiveData(){
+    /*private fun fetchNotificationLiveData(){
         val currentUserID = FirebaseAuth.getInstance().currentUser?.uid ?:""
         val databaseRef = Firebase.database.getReferenceFromUrl(BuildConfig.STORAGE_URL).child("User")
             .child(currentUserID).child("notification")
@@ -209,5 +209,5 @@ class HomeFragment : BaseFragment() {
 
         })
 
-    }
+    }*/
 }

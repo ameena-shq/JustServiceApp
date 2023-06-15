@@ -86,11 +86,16 @@ class MainActivity : AppCompatActivity(),AppListener {
 
     private val messageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
-            p1?.let {
-
-                val menuItem = binding.navigationView.menu.getItem(1).itemId
-                val badge = binding.navigationView.getOrCreateBadge(menuItem)
-                badge.backgroundColor = getColor(R.color.red)
+            p1?.let {intent->
+                if (intent.hasExtra("updateChat")) {
+                    val menuItem = binding.navigationView.menu.getItem(1).itemId
+                    val badge = binding.navigationView.getOrCreateBadge(menuItem)
+                    badge.backgroundColor = getColor(R.color.red)
+                }else{
+                    val menuItem = binding.navigationView.menu.getItem(2).itemId
+                    val badge = binding.navigationView.getOrCreateBadge(menuItem)
+                    badge.backgroundColor = getColor(R.color.red)
+                }
             }
 
         }
@@ -108,7 +113,7 @@ class MainActivity : AppCompatActivity(),AppListener {
         }
     }
 
-    override fun updateNotificationBadge(count:Int) {
+    /*override fun updateNotificationBadge(count:Int) {
         val menuItem = binding.navigationView.menu.getItem(2).itemId
         val badge = binding.navigationView.getOrCreateBadge(menuItem)
         if (count > 0 && count > notificationCount)
@@ -116,9 +121,9 @@ class MainActivity : AppCompatActivity(),AppListener {
         else
             binding.navigationView.removeBadge(menuItem)
         notificationCount = count
-    }
+    }*/
 
-    override fun updateChatBadge(count:Int) {
+   /* override fun updateChatBadge(count:Int) {
         val menuItem = binding.navigationView.menu.getItem(1).itemId
         val badge = binding.navigationView.getOrCreateBadge(menuItem)
         if (count > 0 && count > chatCount)
@@ -126,7 +131,7 @@ class MainActivity : AppCompatActivity(),AppListener {
         else
             binding.navigationView.removeBadge(menuItem)
         chatCount = count
-    }
+    }*/
 
     private fun initGraph(bundle: Bundle?){
         val startDestination = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)

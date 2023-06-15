@@ -43,13 +43,13 @@ open class BaseFragment : Fragment() {
         listener.fetchUserProfileImg()
     }
 
-    fun updateNotificationBadge(count:Int){
+    /*fun updateNotificationBadge(count:Int){
         listener.updateNotificationBadge(count)
-    }
+    }*/
 
-    fun updateChatBadge(count:Int){
+    /*fun updateChatBadge(count:Int){
         listener.updateChatBadge(count)
-    }
+    }*/
 
     fun sendNotification(token:String,toID:String,user:User?,notificationType:Int,title:String,message:String){
         val time = SimpleDateFormat("dd,MMMM,yyyy HH:mm").format(Date(System.currentTimeMillis()))

@@ -35,9 +35,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationID = Random().nextInt(3000)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            setupChannels(notificationManager)
-        }
+        setupChannels(notificationManager)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
             this, 0, intent,
@@ -56,7 +54,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         if (message?.data?.get("title") == "New Message") {
             val intentBroadcast = Intent("MyData")
-            intent.putExtra("updateChat", true)
+            intentBroadcast.putExtra("updateChat", true)
+            localBroadcast?.sendBroadcast(intentBroadcast)
+        }else{
+            val intentBroadcast = Intent("MyData")
+            intentBroadcast.putExtra("updateNotification", true)
             localBroadcast?.sendBroadcast(intentBroadcast)
         }
     }
@@ -66,7 +68,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     private fun setupChannels(notificationManager: NotificationManager?) {
         val adminChannelName = "New notification"
         val adminChannelDescription = "Device to devie notification"
